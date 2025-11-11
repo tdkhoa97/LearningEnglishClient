@@ -18,11 +18,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/myapp:latest .
+          docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/learning-english-app:latest .
 
       - name: Push image to GHCR
         run: |
-          docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/myapp:latest
+          docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/learning-english-app:latest
 
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@v1.2.0
