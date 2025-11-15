@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { useAuthStore } from '@/stores/authStore'
 import { BookOpen, User, LogOut, Home, GraduationCap, Trophy, MessageSquare, TrendingUp, Bell } from 'lucide-react'
-import { SidebarProvider } from "@/components/Layout/sidebar";
+import { SidebarProvider } from "@/components/Layout/Sidebar";
 
 export function Layout() {
     const location = useLocation()
