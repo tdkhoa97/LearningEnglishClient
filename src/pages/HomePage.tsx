@@ -13,7 +13,7 @@ import {
     PlayCircle,
 } from 'lucide-react'
 import { Star, Zap, Trophy, Users, Globe, Sparkles } from "lucide-react";
-
+import { CatLogo } from "@/components/CatLogo"
 interface HomePageProps {
     onGetStarted: () => void;
 }
@@ -59,18 +59,18 @@ export function HomePage(props: HomePageProps) {
     ]
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-blue-50 via-purple-50 to-pink-50 w-full overflow-auto">
+        <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-pink-50 w-full overflow-auto">
             {/* Hero Section */}
             <section className="relative overflow-hidden">
                 <div className="max-w-6xl mx-auto px-4 py-16 md:py-24">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6">
-                            <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300">
+                            <Badge className="bg-orange-100 text-orange-800 border-orange-300">
                                 ✨ Free Forever • No Ads • Fun Learning
                             </Badge>
 
-                            <h1 className="text-green-600">
-                                Learn English the Fun Way! 🦉
+                            <h1 className="text-orange-600">
+                                Learn English the Fun Way! 🐱
                             </h1>
 
                             <p className="text-gray-700 text-xl">
@@ -82,7 +82,7 @@ export function HomePage(props: HomePageProps) {
                                 <Button
                                     onClick={onGetStarted}
                                     size="lg"
-                                    className="h-14 px-8 bg-green-500 hover:bg-green-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all"
+                                    className="h-14 px-8 bg-orange-500 hover:bg-orange-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all"
                                 >
                                     GET STARTED - IT'S FREE! 🚀
                                 </Button>
@@ -90,7 +90,7 @@ export function HomePage(props: HomePageProps) {
                                 <Button
                                     variant="outline"
                                     size="lg"
-                                    className="h-14 px-8 border-2 border-blue-500 text-blue-600 hover:bg-blue-50 rounded-2xl"
+                                    className="h-14 px-8 border-2 border-amber-500 text-amber-600 hover:bg-amber-50 rounded-2xl"
                                 >
                                     WATCH DEMO 🎬
                                 </Button>
@@ -102,7 +102,7 @@ export function HomePage(props: HomePageProps) {
                                         {['😊', '🙂', '😄', '😃'].map((emoji, i) => (
                                             <div
                                                 key={i}
-                                                className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center border-2 border-white"
+                                                className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-pink-400 flex items-center justify-center border-2 border-white"
                                             >
                                                 <span className="text-lg">{emoji}</span>
                                             </div>
@@ -121,11 +121,11 @@ export function HomePage(props: HomePageProps) {
                         </div>
 
                         <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-br from-blue-300 to-purple-400 rounded-3xl transform rotate-3"></div>
+                            <div className="absolute inset-0 bg-gradient-to-br from-orange-300 to-pink-400 rounded-3xl transform rotate-3"></div>
                             <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-3">
-                                        <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+                                        <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center">
                                             <span className="text-2xl">👋</span>
                                         </div>
                                         <div className="flex-1 bg-gray-100 rounded-lg p-3">
@@ -134,15 +134,15 @@ export function HomePage(props: HomePageProps) {
                                         </div>
                                     </div>
 
-                                    <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl p-4">
+                                    <div className="bg-gradient-to-r from-orange-100 to-pink-100 rounded-xl p-4">
                                         <p className="text-sm text-gray-600 mb-2">Your Progress</p>
                                         <div className="space-y-2">
                                             <div className="flex justify-between text-sm">
                                                 <span>Daily Goal</span>
-                                                <span className="text-green-600">450/500 XP</span>
+                                                <span className="text-orange-600">450/500 XP</span>
                                             </div>
                                             <div className="w-full bg-white rounded-full h-3">
-                                                <div className="bg-green-500 h-3 rounded-full" style={{ width: '90%' }}></div>
+                                                <div className="bg-orange-500 h-3 rounded-full" style={{ width: '90%' }}></div>
                                             </div>
                                         </div>
                                     </div>
@@ -151,7 +151,7 @@ export function HomePage(props: HomePageProps) {
                                         {['🎨', '🐶', '🔢'].map((emoji, i) => (
                                             <div
                                                 key={i}
-                                                className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl p-4 text-center hover:scale-105 transition-transform"
+                                                className="bg-gradient-to-br from-orange-400 to-amber-500 rounded-xl p-4 text-center hover:scale-105 transition-transform"
                                             >
                                                 <span className="text-3xl">{emoji}</span>
                                             </div>
@@ -193,52 +193,52 @@ export function HomePage(props: HomePageProps) {
                             </p>
                         </Card>
 
-                        <Card className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-200 hover:shadow-lg transition-shadow">
-                            <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-4">
+                        <Card className="p-6 bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 hover:shadow-lg transition-shadow">
+                            <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-4">
                                 <Zap className="w-8 h-8 text-white" />
                             </div>
-                            <h3 className="text-blue-800 mb-2">Bite-Sized Lessons</h3>
-                            <p className="text-blue-700">
+                            <h3 className="text-orange-800 mb-2">Bite-Sized Lessons</h3>
+                            <p className="text-orange-700">
                                 Just 5-15 minutes a day! Perfect for busy schedules and short attention spans.
                             </p>
                         </Card>
 
-                        <Card className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-200 hover:shadow-lg transition-shadow">
-                            <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-4">
+                        <Card className="p-6 bg-gradient-to-br from-amber-50 to-amber-100 border-2 border-amber-200 hover:shadow-lg transition-shadow">
+                            <div className="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center mb-4">
                                 <Trophy className="w-8 h-8 text-white" />
                             </div>
-                            <h3 className="text-green-800 mb-2">Track Progress</h3>
-                            <p className="text-green-700">
+                            <h3 className="text-amber-800 mb-2">Track Progress</h3>
+                            <p className="text-amber-700">
                                 Earn XP, unlock achievements, and watch your streak grow every single day!
                             </p>
                         </Card>
 
-                        <Card className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-200 hover:shadow-lg transition-shadow">
-                            <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-4">
+                        <Card className="p-6 bg-gradient-to-br from-rose-50 to-rose-100 border-2 border-rose-200 hover:shadow-lg transition-shadow">
+                            <div className="w-16 h-16 bg-rose-500 rounded-2xl flex items-center justify-center mb-4">
                                 <Users className="w-8 h-8 text-white" />
                             </div>
-                            <h3 className="text-purple-800 mb-2">For All Ages</h3>
-                            <p className="text-purple-700">
+                            <h3 className="text-rose-800 mb-2">For All Ages</h3>
+                            <p className="text-rose-700">
                                 From kids to adults, our content is designed to be appropriate and fun for everyone!
-                            </p>
-                        </Card>
-
-                        <Card className="p-6 bg-gradient-to-br from-orange-50 to-orange-100 border-2 border-orange-200 hover:shadow-lg transition-shadow">
-                            <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-4">
-                                <Globe className="w-8 h-8 text-white" />
-                            </div>
-                            <h3 className="text-orange-800 mb-2">Learn Anywhere</h3>
-                            <p className="text-orange-700">
-                                Practice on any device, anytime. Your progress syncs automatically!
                             </p>
                         </Card>
 
                         <Card className="p-6 bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-200 hover:shadow-lg transition-shadow">
                             <div className="w-16 h-16 bg-yellow-500 rounded-2xl flex items-center justify-center mb-4">
+                                <Globe className="w-8 h-8 text-white" />
+                            </div>
+                            <h3 className="text-yellow-800 mb-2">Learn Anywhere</h3>
+                            <p className="text-yellow-700">
+                                Practice on any device, anytime. Your progress syncs automatically!
+                            </p>
+                        </Card>
+
+                        <Card className="p-6 bg-gradient-to-br from-purple-50 to-purple-100 border-2 border-purple-200 hover:shadow-lg transition-shadow">
+                            <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mb-4">
                                 <Star className="w-8 h-8 text-white" />
                             </div>
-                            <h3 className="text-yellow-800 mb-2">100% Free</h3>
-                            <p className="text-yellow-700">
+                            <h3 className="text-purple-800 mb-2">100% Free</h3>
+                            <p className="text-purple-700">
                                 No hidden costs, no subscriptions. Quality education should be free for all!
                             </p>
                         </Card>
@@ -247,7 +247,7 @@ export function HomePage(props: HomePageProps) {
             </section>
 
             {/* How It Works Section */}
-            <section className="py-16 bg-gradient-to-b from-purple-50 to-blue-50">
+            <section className="py-16 bg-gradient-to-b from-orange-50 to-amber-50">
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2 className="text-gray-800 mb-4">How It Works 📚</h2>
@@ -258,30 +258,30 @@ export function HomePage(props: HomePageProps) {
 
                     <div className="grid md:grid-cols-3 gap-8">
                         <div className="text-center">
-                            <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg">
+                            <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg">
                                 <span className="text-3xl">1️⃣</span>
                             </div>
-                            <h3 className="text-blue-800 mb-2">Choose Your Lesson</h3>
+                            <h3 className="text-orange-800 mb-2">Choose Your Lesson</h3>
                             <p className="text-gray-600">
                                 Pick from fun topics like greetings, animals, food, and more!
                             </p>
                         </div>
 
                         <div className="text-center">
-                            <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg">
+                            <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg">
                                 <span className="text-3xl">2️⃣</span>
                             </div>
-                            <h3 className="text-green-800 mb-2">Play & Learn</h3>
+                            <h3 className="text-amber-800 mb-2">Play & Learn</h3>
                             <p className="text-gray-600">
                                 Complete interactive exercises and games to master new words!
                             </p>
                         </div>
 
                         <div className="text-center">
-                            <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg">
+                            <div className="w-20 h-20 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white shadow-lg">
                                 <span className="text-3xl">3️⃣</span>
                             </div>
-                            <h3 className="text-purple-800 mb-2">Earn Rewards</h3>
+                            <h3 className="text-pink-800 mb-2">Earn Rewards</h3>
                             <p className="text-gray-600">
                                 Collect stars, gain XP, and unlock new levels as you progress!
                             </p>
@@ -291,7 +291,7 @@ export function HomePage(props: HomePageProps) {
             </section>
 
             {/* CTA Section */}
-            <section className="py-16 bg-gradient-to-r from-green-400 via-blue-500 to-purple-500">
+            <section className="py-16 bg-gradient-to-r from-orange-400 via-amber-500 to-pink-500">
                 <div className="max-w-4xl mx-auto px-4 text-center">
                     <h2 className="text-white mb-4">
                         Ready to Start Your English Adventure? 🚀
@@ -302,7 +302,7 @@ export function HomePage(props: HomePageProps) {
                     <Button
                         onClick={onGetStarted}
                         size="lg"
-                        className="h-16 px-12 bg-white text-green-600 hover:bg-gray-100 rounded-2xl shadow-2xl hover:shadow-xl transition-all"
+                        className="h-16 px-12 bg-white text-orange-600 hover:bg-gray-100 rounded-2xl shadow-2xl hover:shadow-xl transition-all"
                     >
                         START LEARNING NOW - FREE! 🎉
                     </Button>
@@ -316,11 +316,9 @@ export function HomePage(props: HomePageProps) {
             <div className="fixed bottom-8 right-8 z-40">
                 <div className="relative">
                     <div className="absolute -top-20 right-0 bg-white rounded-2xl p-4 shadow-lg max-w-xs hidden md:block animate-bounce">
-                        <p className="text-sm">Hi! I'm Lingo the Owl! Ready to learn? 🦉</p>
+                        <p className="text-sm">Hi! I'm Kitty the Cat! Ready to learn? 🐱</p>
                     </div>
-                    <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform cursor-pointer">
-                        <span className="text-5xl">🦉</span>
-                    </div>
+                    <CatLogo size="xl" animated={true} />
                 </div>
             </div>
         </div>

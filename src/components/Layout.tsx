@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { useAuthStore } from '@/stores/authStore'
 import { BookOpen, User, LogOut, Home, GraduationCap, Trophy, MessageSquare, TrendingUp, Bell } from 'lucide-react'
 import { SidebarProvider } from "@/components/Layout/Sidebar";
+import { AppSidebar } from "@/components/Layout/AppSidebar";
+type Page = "home" | "learn" | "practice" | "leaderboard" | "profile" | "vocabulary" | "historical-places" | "challenges";
 
 export function Layout() {
     const location = useLocation()
     const { user, isAuthenticated, logout } = useAuthStore()
+    const [currentPage, setCurrentPage] = useState<Page>("home");
+    const [streak, setStreak] = useState(7);
+    const [xp, setXp] = useState(450);
+    const [dailyGoal] = useState(500);
 
     const navigation = [
         { name: 'Trang chủ', href: '/', icon: Home },
@@ -20,77 +26,74 @@ export function Layout() {
         { name: 'Tài khoản', href: '/account', icon: User },
     ]
 
+    const handleNavigation = (page: Page) => {
+        setCurrentPage(page);
+    };
+
+    const handleGetStarted = () => {
+        setCurrentPage("learn");
+    };
+
+
     return (
         <SidebarProvider>
-            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+            <div className="flex min-h-screen w-full bg-gradient-to-br from-orange-50 via-amber-50 to-pink-50">
+                <AppSidebar
+                    currentPage={currentPage}
+                    onNavigate={handleNavigation}
+                    streak={streak}
+                    xp={xp}
+                    dailyGoal={dailyGoal}
+                />
                 {/* Header */}
-                <header className="bg-white shadow-sm border-b">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex justify-between items-center h-16">
-                            <div className="flex items-center space-x-4">
-                                <div className="flex items-center space-x-2">
-                                    <GraduationCap className="h-8 w-8 text-blue-600" />
-                                    <h1 className="text-xl font-bold text-gray-900">English Learning</h1>
+                {/* <header className="bg-white shadow-sm border-b">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex justify-between items-center h-16">
+                                <div className="flex items-center space-x-4">
+                                    <div className="flex items-center space-x-2">
+                                        <GraduationCap className="h-8 w-8 text-blue-600" />
+                                        <h1 className="text-xl font-bold text-gray-900">English Learning</h1>
+                                    </div>
+                                </div>
+
+                
+                                <div className="flex items-center space-x-4">
+                                    {isAuthenticated ? (
+                                        <>
+                                            <div className="flex items-center space-x-2">
+                                                <div className="text-sm">
+                                                    <p className="font-medium text-gray-900">{user?.name}</p>
+                                                    <p className="text-gray-500">Level: {user?.level}</p>
+                                                </div>
+                                            </div>
+                                            <Button variant="outline" size="sm" onClick={logout}>
+                                                <LogOut className="h-4 w-4 mr-2" />
+                                                Đăng xuất
+                                            </Button>
+                                        </>
+                                    ) : (
+                                        <Link to="/login">
+                                            <Button size="sm">Đăng nhập</Button>
+                                        </Link>
+                                    )}
                                 </div>
                             </div>
-
-                            <nav className="hidden md:flex space-x-8">
-                                {navigation.map((item) => {
-                                    const Icon = item.icon
-                                    const isActive = location.pathname === item.href
-                                    return (
-                                        <Link
-                                            key={item.name}
-                                            to={item.href}
-                                            className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive
-                                                ? 'bg-blue-100 text-blue-700'
-                                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                                                }`}
-                                        >
-                                            <Icon className="h-4 w-4" />
-                                            <span>{item.name}</span>
-                                        </Link>
-                                    )
-                                })}
-                            </nav>
-
-                            <div className="flex items-center space-x-4">
-                                {isAuthenticated ? (
-                                    <>
-                                        <div className="flex items-center space-x-2">
-                                            <div className="text-sm">
-                                                <p className="font-medium text-gray-900">{user?.name}</p>
-                                                <p className="text-gray-500">Level: {user?.level}</p>
-                                            </div>
-                                        </div>
-                                        <Button variant="outline" size="sm" onClick={logout}>
-                                            <LogOut className="h-4 w-4 mr-2" />
-                                            Đăng xuất
-                                        </Button>
-                                    </>
-                                ) : (
-                                    <Link to="/login">
-                                        <Button size="sm">Đăng nhập</Button>
-                                    </Link>
-                                )}
-                            </div>
                         </div>
-                    </div>
-                </header>
+                    </header> */}
 
                 {/* Main Content */}
-                <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <main className="flex-1">
                     <Outlet />
                 </main>
 
                 {/* Footer */}
-                <footer className="bg-white border-t mt-auto">
+                {/* <footer className="bg-white border-t mt-auto">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                         <div className="text-center text-gray-500 text-sm">
                             <p>&copy; 2024 English Learning App. Học tiếng Anh hiệu quả.</p>
                         </div>
                     </div>
-                </footer>
+                </footer> */}
             </div>
         </SidebarProvider>
     )
