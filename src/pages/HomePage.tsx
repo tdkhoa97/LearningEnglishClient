@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -14,15 +14,17 @@ import {
 } from 'lucide-react'
 import { Star, Zap, Trophy, Users, Globe, Sparkles } from "lucide-react";
 import { CatLogo } from "@/components/CatLogo"
+import { PageHeader } from "@/components/Layout/PageHeader";
 interface HomePageProps {
-    onGetStarted: () => void;
 }
 
+type Page = "home" | "learn" | "practice" | "leaderboard" | "profile" | "vocabulary" | "historical-places" | "challenges";
+
 export function HomePage(props: HomePageProps) {
-    const { onGetStarted } = props
     const { user, isAuthenticated } = useAuthStore()
     const { lessons, learnedWords, currentStreak, dailyGoal } = useLearningStore()
 
+    const [currentPage, setCurrentPage] = useState<Page>("home");
     const completedLessons = lessons.filter(lesson => lesson.completed).length
     const totalLessons = lessons.length
     const progressPercentage = totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0
@@ -58,8 +60,13 @@ export function HomePage(props: HomePageProps) {
         }
     ]
 
+    const handleGetStarted = () => {
+        setCurrentPage("learn");
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-pink-50 w-full overflow-auto">
+            <PageHeader />
             {/* Hero Section */}
             <section className="relative overflow-hidden">
                 <div className="max-w-6xl mx-auto px-4 py-16 md:py-24">
@@ -80,7 +87,7 @@ export function HomePage(props: HomePageProps) {
 
                             <div className="flex flex-wrap gap-4">
                                 <Button
-                                    onClick={onGetStarted}
+                                    onClick={handleGetStarted}
                                     size="lg"
                                     className="h-14 px-8 bg-orange-500 hover:bg-orange-600 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all"
                                 >
@@ -300,7 +307,7 @@ export function HomePage(props: HomePageProps) {
                         Join millions of learners worldwide and make English learning fun!
                     </p>
                     <Button
-                        onClick={onGetStarted}
+                        onClick={handleGetStarted}
                         size="lg"
                         className="h-16 px-12 bg-white text-orange-600 hover:bg-gray-100 rounded-2xl shadow-2xl hover:shadow-xl transition-all"
                     >

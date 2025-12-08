@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { useAuthStore } from '@/stores/authStore'
 import { BookOpen, User, LogOut, Home, GraduationCap, Trophy, MessageSquare, TrendingUp, Bell } from 'lucide-react'
-import { SidebarProvider } from "@/components/Layout/Sidebar";
+import { SidebarProvider, useSidebar } from "@/components/Layout/Sidebar";
 import { AppSidebar } from "@/components/Layout/AppSidebar";
 type Page = "home" | "learn" | "practice" | "leaderboard" | "profile" | "vocabulary" | "historical-places" | "challenges";
 
@@ -34,17 +34,25 @@ export function Layout() {
         setCurrentPage("learn");
     };
 
+    const MainContent = () => {
+        const { open } = useSidebar();
+
+        return (
+            <main
+                className={`
+                flex-1 transition-all duration-300
+                ${open ? "ml-64" : ""} 
+            `}
+            >
+                <Outlet />
+            </main>
+        );
+    }
 
     return (
         <SidebarProvider>
             <div className="flex min-h-screen w-full bg-gradient-to-br from-orange-50 via-amber-50 to-pink-50">
-                <AppSidebar
-                    currentPage={currentPage}
-                    onNavigate={handleNavigation}
-                    streak={streak}
-                    xp={xp}
-                    dailyGoal={dailyGoal}
-                />
+                <AppSidebar />
                 {/* Header */}
                 {/* <header className="bg-white shadow-sm border-b">
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,9 +90,10 @@ export function Layout() {
                     </header> */}
 
                 {/* Main Content */}
-                <main className="flex-1">
+                <MainContent />
+                {/* <main className="flex-1">
                     <Outlet />
-                </main>
+                </main> */}
 
                 {/* Footer */}
                 {/* <footer className="bg-white border-t mt-auto">

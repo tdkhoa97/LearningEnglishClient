@@ -18,6 +18,7 @@ import { PracticePage } from "@/pages/PracticePage";
 import { LeaderboardPage } from "@/pages/LeaderboardPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { VocabularyBankPage } from "@/pages/VocabularyBankPage";
+import { CourseLibraryPage } from "@/pages/CourseLibraryPage";
 import { HistoricalPlacesPage } from "@/pages/HistoricalPlacesPage";
 import { DailyChallengesPage } from "@/pages/DailyChallengesPage";
 
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <HomePage />,
+            },
+            {
+                path: 'courses',
+                element: <CourseLibraryPage />
             },
             {
                 path: 'lessons',

@@ -4,6 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
+        "start": "yarn run dev",
         "dev": "concurrently \"npm run dev:api\" \"npm run dev:vite\"",
         "dev:vite": "vite",
         "dev:api": "json-server --watch db.json --port 3001",

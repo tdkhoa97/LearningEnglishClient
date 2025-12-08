@@ -1,4 +1,4 @@
-import { Home, BookOpen, Trophy, Zap, MapPin, BookMarked, User, Flame, Star, Crown, Target } from "lucide-react";
+import { Home, BookOpen, Trophy, Zap, MapPin, BookMarked, User, Flame, Star, Crown, Target, Headphones, Library, GraduationCap, MessageSquare, Users } from "lucide-react";
 import {
     Sidebar,
     SidebarContent,
@@ -16,53 +16,80 @@ import { Progress } from "@/components/ui/progress";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { CatLogo } from "@/components/CatLogo";
+import { useUserStore } from "@/stores/useUserStore";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type Page = "home" | "learn" | "practice" | "leaderboard" | "profile" | "vocabulary" | "historical-places" | "challenges";
 
 interface AppSidebarProps {
-    currentPage: Page;
-    onNavigate: (page: Page) => void;
-    streak: number;
-    xp: number;
-    dailyGoal: number;
+
 }
 
-export function AppSidebar({ currentPage, onNavigate, streak, xp, dailyGoal }: AppSidebarProps) {
+export function AppSidebar(props: AppSidebarProps) {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    // Get global state from Zustand
+    const { xp, streak, dailyGoal } = useUserStore();
+
     const progress = Math.min((xp / dailyGoal) * 100, 100);
     const level = Math.floor(xp / 100) + 1;
+    const currentPage = location.pathname;
 
     const mainNavItems = [
         {
             title: "Home",
             icon: Home,
-            page: "home" as Page,
+            href: "/",
             color: "text-orange-600",
             bgColor: "bg-orange-50",
         },
         {
             title: "Learn",
             icon: BookOpen,
-            page: "learn" as Page,
+            href: "/learn",
             color: "text-amber-600",
             bgColor: "bg-amber-50",
         },
         {
             title: "Practice",
             icon: Target,
-            page: "practice" as Page,
+            href: "/practice",
             color: "text-rose-600",
             bgColor: "bg-rose-50",
         },
         {
             title: "Daily Challenges",
             icon: Zap,
-            page: "challenges" as Page,
+            href: "/daily",
             color: "text-pink-600",
             bgColor: "bg-pink-50",
         },
     ];
 
     const exploreNavItems = [
+        {
+            title: "Courses",
+            icon: Library,
+            page: "courses" as Page,
+            href: '/'
+            color: "text-purple-600",
+            bgColor: "bg-purple-50",
+        },
+        {
+            title: "4 Skills",
+            icon: Headphones,
+            page: "skills" as Page,
+            color: "text-blue-600",
+            bgColor: "bg-blue-50",
+        },
+        {
+            title: "Exam Prep",
+            icon: GraduationCap,
+            page: "exams" as Page,
+            color: "text-indigo-600",
+            bgColor: "bg-indigo-50",
+        },
         {
             title: "Leaderboard",
             icon: Trophy,
@@ -86,12 +113,15 @@ export function AppSidebar({ currentPage, onNavigate, streak, xp, dailyGoal }: A
         },
     ];
 
+    const isActive = (path: string) =>
+        currentPage === path || currentPage.startsWith(path);
+
     return (
-        <Sidebar className="border-r-2 border-orange-200">
+        <Sidebar className="w-64 flex-shrink-0 border-r-2 border-orange-200">
             <SidebarHeader className="border-b-2 border-orange-200 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 p-4">
                 <div className="flex items-center justify-between">
                     <button
-                        onClick={() => onNavigate("home")}
+                        onClick={() => navigate("/")}
                         className="flex items-center gap-2 hover:scale-105 transition-transform"
                     >
                         <CatLogo size="sm" animated={false} />
@@ -148,22 +178,23 @@ export function AppSidebar({ currentPage, onNavigate, streak, xp, dailyGoal }: A
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            {mainNavItems.map((item) => (
-                                <SidebarMenuItem key={item.page}>
+                            {mainNavItems.map((item) => {
+                                const active = isActive(item.href);
+                                return <SidebarMenuItem key={item.href}>
                                     <SidebarMenuButton
-                                        onClick={() => onNavigate(item.page)}
-                                        isActive={currentPage === item.page}
-                                        className={`group relative ${currentPage === item.page
+                                        onClick={() => navigate(item.href)}
+                                        isActive={active}
+                                        className={`group relative ${active
                                             ? `${item.bgColor} ${item.color} border-l-4 border-current`
                                             : "hover:bg-gray-50"
                                             }`}
                                     >
                                         <item.icon
-                                            className={`w-5 h-5 ${currentPage === item.page ? item.color : "text-gray-600"
+                                            className={`w-5 h-5 ${active ? item.color : "text-gray-600"
                                                 } group-hover:scale-110 transition-transform`}
                                         />
                                         <span>{item.title}</span>
-                                        {item.page === "challenges" && (
+                                        {item.href === "challenges" && (
                                             <Badge
                                                 variant="secondary"
                                                 className="ml-auto bg-yellow-400 text-yellow-900 border-0"
@@ -173,7 +204,7 @@ export function AppSidebar({ currentPage, onNavigate, streak, xp, dailyGoal }: A
                                         )}
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
-                            ))}
+                            })}
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
@@ -185,24 +216,76 @@ export function AppSidebar({ currentPage, onNavigate, streak, xp, dailyGoal }: A
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            {exploreNavItems.map((item) => (
-                                <SidebarMenuItem key={item.page}>
-                                    <SidebarMenuButton
-                                        onClick={() => onNavigate(item.page)}
-                                        isActive={currentPage === item.page}
-                                        className={`group ${currentPage === item.page
-                                            ? `${item.bgColor} ${item.color} border-l-4 border-current`
-                                            : "hover:bg-gray-50"
-                                            }`}
+                            {exploreNavItems.map((item) => {
+                                const active = isActive(item.href);
+                                return (
+                                    <SidebarMenuItem key={item.href}>
+                                        <SidebarMenuButton
+                                            onClick={() => navigate(item.href)}
+                                            isActive={active}
+                                            className={`group ${active
+                                                ? `${item.bgColor} ${item.color} border-l-4 border-current`
+                                                : "hover:bg-gray-50"
+                                                }`}
+                                        >
+                                            <item.icon
+                                                className={`w-5 h-5 ${active ? item.color : "text-gray-600"
+                                                    } group-hover:scale-110 transition-transform`}
+                                            />
+                                            <span>{item.title}</span>
+                                        </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                )
+                            }
+                            )}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+                {/* Community Section */}
+                <SidebarGroup>
+                    <SidebarGroupLabel className="text-xs text-gray-500 uppercase px-2">
+                        Community
+                    </SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            <SidebarMenuItem>
+                                <SidebarMenuButton
+                                    onClick={() => navigate("forum")}
+                                    isActive={currentPage === "forum"}
+                                    className={`group ${currentPage === "forum"
+                                        ? "bg-green-50 text-green-700 border-l-4 border-green-700"
+                                        : "hover:bg-gray-50"
+                                        }`}
+                                >
+                                    <Users
+                                        className={`w-5 h-5 ${currentPage === "forum" ? "text-green-700" : "text-gray-600"
+                                            } group-hover:scale-110 transition-transform`}
+                                    />
+                                    <span>Forum</span>
+                                    <Badge
+                                        variant="secondary"
+                                        className="ml-auto bg-green-400 text-green-900 border-0"
                                     >
-                                        <item.icon
-                                            className={`w-5 h-5 ${currentPage === item.page ? item.color : "text-gray-600"
-                                                } group-hover:scale-110 transition-transform`}
-                                        />
-                                        <span>{item.title}</span>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
+                                        NEW
+                                    </Badge>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                            <SidebarMenuItem>
+                                <SidebarMenuButton
+                                    onClick={() => navigate("messages")}
+                                    isActive={currentPage === "messages"}
+                                    className={`group ${currentPage === "messages"
+                                        ? "bg-blue-50 text-blue-700 border-l-4 border-blue-700"
+                                        : "hover:bg-gray-50"
+                                        }`}
+                                >
+                                    <MessageSquare
+                                        className={`w-5 h-5 ${currentPage === "messages" ? "text-blue-700" : "text-gray-600"
+                                            } group-hover:scale-110 transition-transform`}
+                                    />
+                                    <span>Messages</span>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
@@ -212,8 +295,8 @@ export function AppSidebar({ currentPage, onNavigate, streak, xp, dailyGoal }: A
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton
-                            onClick={() => onNavigate("profile")}
-                            isActive={currentPage === "profile"}
+                            onClick={() => navigate("/profile")}
+                            isActive={isActive("/profile")}
                             className={`${currentPage === "profile"
                                 ? "bg-blue-100 text-blue-700 border-l-4 border-blue-700"
                                 : "hover:bg-gray-50"

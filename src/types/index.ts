@@ -21,22 +21,22 @@ export interface Word {
     difficulty: 'easy' | 'medium' | 'hard'
     category: string
     example: string
-    exampleVietnamese: string
-    learned: boolean
-    points: number
+    exampleVietnamese?: string
+    learned?: boolean
+    points?: number
 }
 
 export interface Lesson {
-    id: string
-    title: string
-    description: string
-    category: string
-    difficulty: 'easy' | 'medium' | 'hard'
-    estimatedTime: number
-    words: Word[]
-    completed: boolean
-    progress: number
-    points: number
+    id?: string
+    title?: string
+    description?: string
+    category?: string
+    difficulty?: 'easy' | 'medium' | 'hard'
+    estimatedTime?: number
+    words?: Word[]
+    completed?: boolean
+    progress?: number
+    points?: number
 }
 
 export interface Achievement {
