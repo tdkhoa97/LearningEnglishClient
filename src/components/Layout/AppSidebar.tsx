@@ -71,8 +71,8 @@ export function AppSidebar(props: AppSidebarProps) {
         {
             title: "Courses",
             icon: Library,
-            page: "courses" as Page,
-            href: '/'
+            // page: "courses" as Page,
+            href: '/courses',
             color: "text-purple-600",
             bgColor: "bg-purple-50",
         },
