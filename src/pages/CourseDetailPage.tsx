@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Card } from "./ui/card";
-import { Button } from "./ui/button";
-import { Badge } from "./ui/badge";
-import { Progress } from "./ui/progress";
-import { PageHeader } from "./PageHeader";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { PageHeader } from "@/components/PageHeader";
 import {
     BookOpen,
     Clock,
@@ -236,8 +236,8 @@ export function CourseDetailPage({ courseId, onBack, onStartLesson }: CourseDeta
                                     <Card
                                         key={unit.id}
                                         className={`bg-white border-2 transition-all duration-300 shadow-md hover:shadow-lg ${unit.locked
-                                                ? 'border-gray-200 opacity-60'
-                                                : `border-gray-200 hover:border-${course.color}-300`
+                                            ? 'border-gray-200 opacity-60'
+                                            : `border-gray-200 hover:border-${course.color}-300`
                                             }`}
                                     >
                                         {/* Unit Header */}
@@ -346,8 +346,8 @@ export function CourseDetailPage({ courseId, onBack, onStartLesson }: CourseDeta
                                                             <div
                                                                 key={lessonId}
                                                                 className={`p-4 bg-white rounded-lg border-2 transition-all hover:shadow-md ${lesson.locked
-                                                                        ? 'border-gray-200 opacity-60'
-                                                                        : 'border-gray-200 hover:border-' + course.color + '-300 cursor-pointer'
+                                                                    ? 'border-gray-200 opacity-60'
+                                                                    : 'border-gray-200 hover:border-' + course.color + '-300 cursor-pointer'
                                                                     }`}
                                                                 onClick={() => !lesson.locked && handleStartLesson(lessonId)}
                                                             >

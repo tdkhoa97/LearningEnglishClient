@@ -21,7 +21,11 @@ import { VocabularyBankPage } from "@/pages/VocabularyBankPage";
 import { CourseLibraryPage } from "@/pages/CourseLibraryPage";
 import { SkillsPracticePage } from "@/pages/SkillsPracticePage";
 import { HistoricalPlacesPage } from "@/pages/HistoricalPlacesPage";
-import { DailyChallengesPage } from "@/pages/DailyChallengesPage";
+import {
+    DailyChallengesPage, ExamPrepPage,
+    ChatForumPage, MessagesPage
+}
+    from "@/pages";
 
 //Test
 const router = createBrowserRouter([
@@ -100,6 +104,18 @@ const router = createBrowserRouter([
             {
                 path: 'leaderboard',
                 element: <LeaderboardPage />,
+            },
+            {
+                path: 'exams',
+                element: <ExamPrepPage />,
+            },
+            {
+                path: 'forum',
+                element: <ChatForumPage />,
+            },
+            {
+                path: 'messages',
+                element: <MessagesPage />,
             },
             {
                 path: 'notifications',
