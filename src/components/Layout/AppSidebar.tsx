@@ -1,4 +1,4 @@
-import { Home, BookOpen, Trophy, Zap, MapPin, BookMarked, User, Flame, Star, Crown, Target, Headphones, Library, GraduationCap, MessageSquare, Users } from "lucide-react";
+import { Home, BookOpen, Trophy, Zap, MapPin, BookMarked, User, Flame, Star, Crown, Target, Headphones, Library, GraduationCap, MessageSquare, Users, Settings } from "lucide-react";
 import {
     Sidebar,
     SidebarContent,
@@ -122,17 +122,17 @@ export function AppSidebar(props: AppSidebarProps) {
         currentPage === path || currentPage.startsWith(path);
 
     return (
-        <Sidebar className="w-64 flex-shrink-0 border-r-2 border-orange-200">
-            <SidebarHeader className="border-b-2 border-orange-200 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 p-4">
+        <Sidebar className="border-r border-emerald-100">
+            <SidebarHeader className="border-b border-emerald-100 bg-gradient-to-br from-emerald-50/50 via-green-50/30 to-lime-50/50 p-4">
                 <div className="flex items-center justify-between">
                     <button
-                        onClick={() => navigate("/")}
+                        onClick={() => navigate("/home")}
                         className="flex items-center gap-2 hover:scale-105 transition-transform"
                     >
                         <CatLogo size="sm" animated={false} />
                         <div>
-                            <h2 className="text-orange-600">FunLingo</h2>
-                            <p className="text-xs text-gray-600">Learn with Kitty! 🐾</p>
+                            <h2 className="text-emerald-600">FunLingo</h2>
+                            <p className="text-xs text-gray-600">Learn with Joy! 🌿</p>
                         </div>
                     </button>
                     <SidebarTrigger />
@@ -141,10 +141,10 @@ export function AppSidebar(props: AppSidebarProps) {
 
             <SidebarContent className="px-2 py-4">
                 {/* User Stats Card */}
-                <div className="mb-4 mx-2 p-4 bg-gradient-to-br from-orange-50 via-amber-50 to-pink-50 rounded-xl border-2 border-orange-200">
+                <div className="mb-4 mx-2 p-4 bg-gradient-to-br from-emerald-50/50 via-green-50/30 to-lime-50/50 rounded-xl border border-emerald-200">
                     <div className="flex items-center gap-3 mb-3">
                         <Avatar className="h-12 w-12 border-2 border-white shadow-lg">
-                            <AvatarFallback className="bg-gradient-to-br from-orange-400 to-pink-400 text-white">
+                            <AvatarFallback className="bg-gradient-to-br from-emerald-400 to-green-500 text-white">
                                 <User className="w-6 h-6" />
                             </AvatarFallback>
                         </Avatar>
@@ -168,14 +168,13 @@ export function AppSidebar(props: AppSidebarProps) {
                         </div>
                         <Progress value={progress} className="h-2 bg-white" />
                         {progress >= 100 && (
-                            <div className="flex items-center gap-1 text-xs text-orange-600">
-                                <Star className="w-3 h-3 fill-orange-600" />
+                            <div className="flex items-center gap-1 text-xs text-emerald-600">
+                                <Star className="w-3 h-3 fill-emerald-600" />
                                 <span>Goal completed! 🎉</span>
                             </div>
                         )}
                     </div>
                 </div>
-
                 {/* Main Navigation */}
                 <SidebarGroup>
                     <SidebarGroupLabel className="text-xs text-gray-500 uppercase px-2">
@@ -183,19 +182,18 @@ export function AppSidebar(props: AppSidebarProps) {
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            {mainNavItems.map((item) => {
-                                const active = isActive(item.href);
-                                return <SidebarMenuItem key={item.href}>
+                            {mainNavItems.map((item) => (
+                                <SidebarMenuItem key={item.href}>
                                     <SidebarMenuButton
                                         onClick={() => navigate(item.href)}
-                                        isActive={active}
-                                        className={`group relative ${active
+                                        isActive={currentPage === item.href}
+                                        className={`group relative ${currentPage === item.href
                                             ? `${item.bgColor} ${item.color} border-l-4 border-current`
                                             : "hover:bg-gray-50"
                                             }`}
                                     >
                                         <item.icon
-                                            className={`w-5 h-5 ${active ? item.color : "text-gray-600"
+                                            className={`w-5 h-5 ${currentPage === item.href ? item.color : "text-gray-600"
                                                 } group-hover:scale-110 transition-transform`}
                                         />
                                         <span>{item.title}</span>
@@ -209,7 +207,7 @@ export function AppSidebar(props: AppSidebarProps) {
                                         )}
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
-                            })}
+                            ))}
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
@@ -221,31 +219,28 @@ export function AppSidebar(props: AppSidebarProps) {
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            {exploreNavItems.map((item) => {
-                                const active = isActive(item.href);
-                                return (
-                                    <SidebarMenuItem key={item.href}>
-                                        <SidebarMenuButton
-                                            onClick={() => navigate(item.href)}
-                                            isActive={active}
-                                            className={`group ${active
-                                                ? `${item.bgColor} ${item.color} border-l-4 border-current`
-                                                : "hover:bg-gray-50"
-                                                }`}
-                                        >
-                                            <item.icon
-                                                className={`w-5 h-5 ${active ? item.color : "text-gray-600"
-                                                    } group-hover:scale-110 transition-transform`}
-                                            />
-                                            <span>{item.title}</span>
-                                        </SidebarMenuButton>
-                                    </SidebarMenuItem>
-                                )
-                            }
-                            )}
+                            {exploreNavItems.map((item) => (
+                                <SidebarMenuItem key={item.href}>
+                                    <SidebarMenuButton
+                                        onClick={() => navigate(item.href)}
+                                        isActive={currentPage === item.href}
+                                        className={`group ${currentPage === item.href
+                                            ? `${item.bgColor} ${item.color} border-l-4 border-current`
+                                            : "hover:bg-gray-50"
+                                            }`}
+                                    >
+                                        <item.icon
+                                            className={`w-5 h-5 ${currentPage === item.href ? item.color : "text-gray-600"
+                                                } group-hover:scale-110 transition-transform`}
+                                        />
+                                        <span>{item.title}</span>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
+
                 {/* Community Section */}
                 <SidebarGroup>
                     <SidebarGroupLabel className="text-xs text-gray-500 uppercase px-2">
@@ -300,8 +295,8 @@ export function AppSidebar(props: AppSidebarProps) {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton
-                            onClick={() => navigate("/profile")}
-                            isActive={isActive("/profile")}
+                            onClick={() => navigate("profile")}
+                            isActive={currentPage === "profile"}
                             className={`${currentPage === "profile"
                                 ? "bg-blue-100 text-blue-700 border-l-4 border-blue-700"
                                 : "hover:bg-gray-50"
@@ -316,6 +311,22 @@ export function AppSidebar(props: AppSidebarProps) {
                                 <p className="text-sm">My Profile</p>
                                 <p className="text-xs text-gray-500">View achievements</p>
                             </div>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton
+                            onClick={() => navigate("settings")}
+                            isActive={currentPage === "settings"}
+                            className={`${currentPage === "settings"
+                                ? "bg-gray-100 text-gray-700 border-l-4 border-gray-700"
+                                : "hover:bg-gray-50"
+                                }`}
+                        >
+                            <Settings
+                                className={`w-5 h-5 ${currentPage === "settings" ? "text-gray-700" : "text-gray-600"
+                                    }`}
+                            />
+                            <span>Settings</span>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>

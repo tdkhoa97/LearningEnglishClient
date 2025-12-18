@@ -10,24 +10,27 @@ import { PostDetailPage } from '@/pages/PostDetailPage'
 import { NotificationsPage } from '@/pages/NotificationsPage'
 import { LessonDetailPage } from '@/pages/LessonDetailPage'
 import ProtectedRoute from '@/components/ProtectedRoute'
-
-// Pages
 import { HomePage } from "@/pages/HomePage";
 import { LearnPage } from "@/pages/LearnPage";
 import { PracticePage } from "@/pages/PracticePage";
 import { LeaderboardPage } from "@/pages/LeaderboardPage";
 import { ProfilePage } from "@/pages/ProfilePage";
-import { VocabularyBankPage } from "@/pages/VocabularyBankPage";
 import { CourseLibraryPage } from "@/pages/CourseLibraryPage";
 import { SkillsPracticePage } from "@/pages/SkillsPracticePage";
 import { HistoricalPlacesPage } from "@/pages/HistoricalPlacesPage";
-import {
-    DailyChallengesPage, ExamPrepPage,
-    ChatForumPage, MessagesPage
-}
-    from "@/pages";
+import { DailyChallengesPage } from "@/pages/DailyChallengesPage";
+import "leaflet/dist/leaflet.css";
 
-//Test
+import {
+    ExamPrepPage, VocabularyBankPage,
+    ChatForumPage, MessagesPage,
+    SettingsPage,
+    AgeSelectorPage
+} from "@/pages";
+import type { AgeGroup } from "@/types";
+import { useUserStore } from "@/stores/useUserStore";
+
+// Router config
 const router = createBrowserRouter([
     {
         path: '/',
@@ -118,6 +121,10 @@ const router = createBrowserRouter([
                 element: <MessagesPage />,
             },
             {
+                path: 'settings',
+                element: <SettingsPage />
+            },
+            {
                 path: 'notifications',
                 element: (
                     <ProtectedRoute>
@@ -142,6 +149,17 @@ const router = createBrowserRouter([
 ])
 
 export default function App() {
+    const { ageGroup, setAgeGroup } = useUserStore();
+
+    const handleSelectAgeGroup = (group: AgeGroup) => {
+        setAgeGroup(group);
+    };
+
+    // Onboarding: if chưa chọn nhóm tuổi thì hiển thị màn AgeSelector toàn màn hình
+    if (!ageGroup) {
+        return <AgeSelectorPage onSelectAgeGroup={handleSelectAgeGroup} />;
+    }
+
     return (
         <QueryProvider>
             <RouterProvider router={router} />

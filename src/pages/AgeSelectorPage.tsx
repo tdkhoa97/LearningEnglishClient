@@ -3,8 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CatLogo } from "@/components/CatLogo";
 import { Sparkles, GraduationCap, Briefcase, BookOpen, Zap, Target } from "lucide-react";
-
-export type AgeGroup = "elementary" | "middle" | "adult";
+import { AgeGroup } from "@/types";
 
 interface AgeSelectorPageProps {
     onSelectAgeGroup: (ageGroup: AgeGroup) => void;

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import type { AgeGroup } from "@/types";
 
 export interface Lesson {
     id: string;
@@ -12,9 +13,13 @@ interface UserStore {
     dailyGoal: number;
     lessons: Lesson[];
 
+    // personalization
+    ageGroup: AgeGroup | null;
+
     // actions
     addXp: (value: number) => void;
     completeLesson: (id: string) => void;
+    setAgeGroup: (ageGroup: AgeGroup) => void;
 }
 
 export const useUserStore = create<UserStore>((set) => ({
@@ -25,6 +30,8 @@ export const useUserStore = create<UserStore>((set) => ({
         { id: "l1", title: "Vocabulary - Animals", completed: false },
         { id: "l2", title: "Grammar - Present Simple", completed: false },
     ],
+
+    ageGroup: null,
 
     addXp: (value) =>
         set((state) => ({
@@ -37,5 +44,10 @@ export const useUserStore = create<UserStore>((set) => ({
                 l.id === id ? { ...l, completed: true } : l
             ),
             xp: state.xp + 20, // mỗi bài +20 XP
+        })),
+
+    setAgeGroup: (ageGroup) =>
+        set(() => ({
+            ageGroup,
         })),
 }));

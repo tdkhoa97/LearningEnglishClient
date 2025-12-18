@@ -194,6 +194,9 @@ export interface AchievementState {
     }) => void
 }
 
+// Age groups (used for onboarding / personalization)
+export type AgeGroup = "elementary" | "middle" | "adult";
+
 // Study modes
 export type StudyMode = 'learn' | 'quiz' | 'review'
 

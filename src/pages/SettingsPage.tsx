@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PageHeader } from "@/components/PageHeader";
-import { AgeGroup } from "./AgeSelectorPage";
+import { AgeGroup } from "@/types";
 import {
     User,
     Sparkles,
@@ -16,10 +16,10 @@ import {
     Map
 } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
+import { useUserStore } from "@/stores/useUserStore";
 
 interface SettingsPageProps {
-    ageGroup: AgeGroup;
-    onChangeAgeGroup: () => void;
+    onChangeAgeGroup?: () => void;
     useLeafletMap?: boolean;
     onToggleMapType?: (useLeaflet: boolean) => void;
 }
@@ -30,7 +30,9 @@ const ageGroupLabels = {
     adult: { label: "Người Lớn", icon: Briefcase, desc: "18+ tuổi", color: "blue" }
 };
 
-export function SettingsPage({ ageGroup, onChangeAgeGroup, useLeafletMap, onToggleMapType }: SettingsPageProps) {
+export function SettingsPage({ onChangeAgeGroup, useLeafletMap, onToggleMapType }: SettingsPageProps) {
+    const { ageGroup, setAgeGroup } = useUserStore();
+
     const currentAgeGroup = ageGroupLabels[ageGroup];
     const Icon = currentAgeGroup.icon;
 
