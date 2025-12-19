@@ -19,7 +19,6 @@ import { CourseLibraryPage } from "@/pages/CourseLibraryPage";
 import { SkillsPracticePage } from "@/pages/SkillsPracticePage";
 import { HistoricalPlacesPage } from "@/pages/HistoricalPlacesPage";
 import { DailyChallengesPage } from "@/pages/DailyChallengesPage";
-import "leaflet/dist/leaflet.css";
 
 import {
     ExamPrepPage, VocabularyBankPage,

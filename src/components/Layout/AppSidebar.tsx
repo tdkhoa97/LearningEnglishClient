@@ -122,7 +122,7 @@ export function AppSidebar(props: AppSidebarProps) {
         currentPage === path || currentPage.startsWith(path);
 
     return (
-        <Sidebar className="border-r border-emerald-100">
+        <Sidebar className="w-64 border-r border-emerald-100">
             <SidebarHeader className="border-b border-emerald-100 bg-gradient-to-br from-emerald-50/50 via-green-50/30 to-lime-50/50 p-4">
                 <div className="flex items-center justify-between">
                     <button
