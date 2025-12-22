@@ -1,4 +1,4 @@
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *));
 
 :root {
     --font-size: 16px;
@@ -10,48 +10,48 @@
     --popover-foreground: oklch(0.145 0 0);
 
     /* FunLingo Primary Colors - Emerald-Green Theme 🌿 */
-    --primary: #10b981;
-    --primary-foreground: oklch(1 0 0);
-    --secondary: #22c55e;
-    --secondary-foreground: #ffffff;
+--primary: #10b981;
+--primary-foreground: oklch(1 0 0);
+--secondary: #22c55e;
+--secondary-foreground: #ffffff;
 
-    /* Muted & Neutral - Fresh and natural */
-    --muted: #f5f5f5;
-    --muted-foreground: #6b7280;
-    --accent: #d1fae5;
-    --accent-foreground: #059669;
+/* Muted & Neutral - Fresh and natural */
+--muted: #f5f5f5;
+--muted-foreground: #6b7280;
+--accent: #d1fae5;
+--accent-foreground: #059669;
 
-    --destructive: #dc2626;
-    --destructive-foreground: #ffffff;
+--destructive: #dc2626;
+--destructive-foreground: #ffffff;
 
-    /* Borders - Light and subtle */
-    --border: rgba(0, 0, 0, 0.08);
-    --input: transparent;
-    --input-background: #fafafa;
-    --switch-background: #e5e7eb;
+/* Borders - Light and subtle */
+--border: rgba(0, 0, 0, 0.08);
+--input: transparent;
+--input-background: #fafafa;
+--switch-background: #e5e7eb;
 
-    --font-weight-medium: 500;
-    --font-weight-normal: 400;
-    --ring: oklch(0.708 0 0);
+--font-weight-medium: 500;
+--font-weight-normal: 400;
+--ring: oklch(0.708 0 0);
 
-    /* Chart colors - Emerald-Green palette */
-    --chart-1: #10b981;
-    --chart-2: #34d399;
-    --chart-3: #22c55e;
-    --chart-4: #4ade80;
-    --chart-5: #86efac;
+/* Chart colors - Emerald-Green palette */
+--chart-1: #10b981;
+--chart-2: #34d399;
+--chart-3: #22c55e;
+--chart-4: #4ade80;
+--chart-5: #86efac;
 
-    --radius: 0.75rem;
+--radius: 0.75rem;
 
-    /* Sidebar - Unified emerald-green theme */
-    --sidebar: #ffffff;
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: #10b981;
-    --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #d1fae5;
-    --sidebar-accent-foreground: #10b981;
-    --sidebar-border: #a7f3d0;
-    --sidebar-ring: oklch(0.708 0 0);
+/* Sidebar - Unified emerald-green theme */
+--sidebar: #ffffff;
+--sidebar-foreground: oklch(0.145 0 0);
+--sidebar-primary: #10b981;
+--sidebar-primary-foreground: #ffffff;
+--sidebar-accent: #d1fae5;
+--sidebar-accent-foreground: #10b981;
+--sidebar-border: #a7f3d0;
+--sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
@@ -197,3 +197,5 @@
 html {
     font-size: var(--font-size);
 }
+
+*/
