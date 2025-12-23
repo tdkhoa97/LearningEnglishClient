@@ -26,5 +26,6 @@ export { SettingsPage } from "./SettingsPage";
 export { SkillsPracticePage } from "./SkillsPracticePage";
 export { VocabularyBankPage } from "./VocabularyBankPage";
 export { MessagesPage } from "./MessagesPage";
+export { TestPage } from "./TestPage";
 
 

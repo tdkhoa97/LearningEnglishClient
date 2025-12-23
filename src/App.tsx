@@ -21,6 +21,7 @@ import { HistoricalPlacesPage } from "@/pages/HistoricalPlacesPage";
 import { DailyChallengesPage } from "@/pages/DailyChallengesPage";
 
 import {
+    TestPage,
     ExamPrepPage, VocabularyBankPage,
     ChatForumPage, MessagesPage,
     SettingsPage,
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <HomePage />,
+            },
+            {
+                path: "test",
+                element: <TestPage />,
             },
             {
                 path: "learn",
