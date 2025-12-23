@@ -160,9 +160,9 @@ export default function App() {
     };
 
     // Onboarding: if chưa chọn nhóm tuổi thì hiển thị màn AgeSelector toàn màn hình
-    if (!ageGroup) {
-        return <AgeSelectorPage onSelectAgeGroup={handleSelectAgeGroup} />;
-    }
+    // if (!ageGroup) {
+    //     return <AgeSelectorPage onSelectAgeGroup={handleSelectAgeGroup} />;
+    // }
 
     return (
         <QueryProvider>
