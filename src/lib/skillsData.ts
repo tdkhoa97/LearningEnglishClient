@@ -1,4 +1,4 @@
-import { AgeGroup } from "../components/AgeSelectorPage";
+import type { AgeGroup } from "@/types";
 
 export type SkillType = "listening" | "speaking" | "reading" | "writing";
 

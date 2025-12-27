@@ -1,4 +1,4 @@
-import { AgeGroup } from "../components/AgeSelectorPage";
+import type { AgeGroup } from "@/types";
 
 export interface Lesson {
     id: number;
