@@ -29,9 +29,10 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install only production dependencies and json-server globally
-RUN npm --legacy-peer-deps && \
+RUN npm install --omit=dev --legacy-peer-deps && \
     npm install -g json-server serve && \
     npm cache clean --force
+
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist ./dist
