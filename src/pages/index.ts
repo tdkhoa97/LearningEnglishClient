@@ -11,7 +11,7 @@ export { DailyChallengesPage } from "./DailyChallengesPage";
 export { ExamPrepPage } from "./ExamPrepPage";
 export { ExerciseQuiz } from "./ExerciseQuiz";
 export { FloatingCats } from "./FloatingCats";
-export { HistoricalPlacesPage } from "./HistoricalPlacesPage";
+export { HistoricalPlacesPage } from "./HistoricalPlaces/HistoricalPlacesPage";
 export { HomePage } from "./HomePage";
 export { LeaderboardPage } from "./LeaderboardPage";
 export { LearnPage } from "./LearnPage";

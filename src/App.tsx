@@ -17,7 +17,7 @@ import { LeaderboardPage } from "@/pages/LeaderboardPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { CourseLibraryPage } from "@/pages/CourseLibraryPage";
 import { SkillsPracticePage } from "@/pages/SkillsPracticePage";
-import { HistoricalPlacesPage } from "@/pages/HistoricalPlacesPage";
+import { HistoricalPlacesPage } from "@/pages/HistoricalPlaces/HistoricalPlacesPage";
 import { DailyChallengesPage } from "@/pages/DailyChallengesPage";
 
 import {

@@ -51,7 +51,7 @@ export function Layout() {
 
     return (
         <SidebarProvider>
-            <div className="flex min-h-screen w-full bg-gradient-to-br from-orange-50 via-amber-50 to-pink-50">
+            <div className="flex min-h-screen w-full ">
                 <AppSidebar />
                 {/* Header */}
                 {/* <header className="bg-white shadow-sm border-b">
