@@ -194,6 +194,8 @@ export interface AchievementState {
     }) => void
 }
 
+export type Page = "home" | "learn" | "practice" | "leaderboard" | "profile" | "settings" | "vocabulary" | "historical-places" | "challenges" | "forum" | "messages" | "skills" | "exams" | "courses";
+
 // Age groups (used for onboarding / personalization)
 export type AgeGroup = "elementary" | "middle" | "adult";
 

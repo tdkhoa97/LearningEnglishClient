@@ -29,7 +29,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install only production dependencies and json-server globally
-RUN npm install --production && \
+RUN npm ci --omit=dev --legacy-peer-deps && \
     npm install -g json-server serve && \
     npm cache clean --force
 
